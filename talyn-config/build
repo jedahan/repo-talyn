@@ -1,0 +1,9 @@
+#!/bin/sh -e
+
+mkdir -p "$1/mnt/debain"
+pwd
+install -D fstab "$1/etc/fstab"
+
+adduser micro
+install -D -o micro -g micro .profile "$1/home/micro/.profile"
+install -D -o micro -g micro .gitconfig "$1/home/micro/.gitconfig"
