@@ -1,0 +1,13 @@
+# talyn
+
+dell xps13 9370
+
+# packages
+
+linux-talyn: micro's laptop kernel
+
+linux-headers: headers for linux-talyn
+
+talyn-config: etcfiles and repositories needed to bootstrap
+
+talyn: micro's laptop packages
