@@ -1,9 +1,10 @@
 #!/bin/sh -e
 
-install fstab hostname hosts resolv.conf sysctl.conf "$1/etc"
+test -d /var/db/kiss/repos/repos || git clone https://github.com/jedahan/kiss-repo-repos /var/db/kiss/repos/repos
+grep -q talyn /etc/hostname || install fstab hostname hosts resolv.conf sysctl.conf "$1/etc"
 
 test -d /var/db/kiss/repos || mkdir -p "$1"/var/db/kiss/repos
-test -d /var/db/kiss/repos/jedahan || git clone https://github.com/jedahan/kiss-repo /var/db/kiss/repos/jedahan
+test -d /var/db/kiss/repos/repos || git clone https://github.com/jedahan/kiss-repo-repos /var/db/kiss/repos/repos
 
 if ! id micro > /dev/null 2>&1; then
   adduser micro
@@ -15,7 +16,9 @@ if ! id micro > /dev/null 2>&1; then
   adduser micro video
 fi
 
-install -D -o micro -g micro .gitconfig .profile "$1"/home/micro
-printf 'export MAKEFLAGS="-j%s"\n' "$(nproc)" >> "$1/home/micro/.profile"
+test -f /home/micro/.gitconfig || install -D -o micro -g micro .gitconfig "$1"/home/micro
 
-add-shell /usr/bin/zsh || echo 'please run add-shell /usr/bin/zsh'
+test -f /home/micro/.profile || install -D -o micro -g micro .profile "$1"/home/micro
+test -f /home/micro/.profile || printf 'export MAKEFLAGS="-j%s"\n' "$(nproc)" >> "$1"/home/micro/.profile
+
+grep -q zsh /etc/shells || add-shell /usr/bin/zsh || echo 'please run add-shell /usr/bin/zsh'
