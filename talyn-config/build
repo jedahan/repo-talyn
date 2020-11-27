@@ -1,11 +1,8 @@
 #!/bin/sh -e
 
-mkdir -p "$1/mnt/debian"
-install -D fstab "$1/etc/fstab"
-install -D hosts "$1/etc/hosts"
-install -D hostname "$1/etc/hostname"
+install fstab hostname hosts resolv.conf sysctl.conf "$1/etc"
 
-test -d /var/db/kiss/repos || mkdir -p "$1/var/db/kiss/repos"
+test -d /var/db/kiss/repos || mkdir -p "$1"/var/db/kiss/repos
 test -d /var/db/kiss/repos/jedahan || git clone https://github.com/jedahan/kiss-repo /var/db/kiss/repos/jedahan
 
 if ! id micro > /dev/null 2>&1; then
@@ -18,9 +15,7 @@ if ! id micro > /dev/null 2>&1; then
   adduser micro video
 fi
 
-install -D -o micro -g micro .gitconfig "$1/home/micro/.gitconfig"
-
-install -D -o micro -g micro .profile "$1/home/micro/.profile"
+install -D -o micro -g micro .gitconfig .profile "$1"/home/micro
 printf 'export MAKEFLAGS="-j%s"\n' "$(nproc)" >> "$1/home/micro/.profile"
 
 add-shell /usr/bin/zsh || echo 'please run add-shell /usr/bin/zsh'

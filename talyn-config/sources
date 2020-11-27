@@ -1,6 +1,7 @@
 files/etc/fstab
 files/etc/hostname
 files/etc/hosts
+files/etc/resolv.conf
 files/etc/sysctl.conf
 files/home/micro/.gitconfig
 files/home/micro/.profile
