@@ -3,8 +3,8 @@ aerc
 alsa-utils
 baseinit
 bash
-buildah
 brightnessctl
+buildah
 croc
 dhcpcd
 dosfstools
@@ -19,8 +19,8 @@ firefox
 foot
 fzf
 gh
-globe-cli
 git-bug
+globe-cli
 gnupg1
 grim
 hack-nerd-font
