@@ -57,6 +57,7 @@ ssu
 strace
 suspend-on-close
 sway
+swayidle
 swaylock
 tcc
 tealdeer
