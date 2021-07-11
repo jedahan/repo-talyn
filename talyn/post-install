@@ -1,7 +1,8 @@
 #!/bin/sh
-set -euo pipefail
+set -eu
 
-printf 'enabling acpid, eiwd, and dhcpcd'
-ssu ln -sf /etc/acpid/ /var/service
-ssu ln -sf /etc/eiwd/ /var/service
+if [ ! -f /var/service/eiwd ]; then
+  echo 'enabling eiwd'
+  ssu ln -sf /etc/sv/eiwd/ /var/service
+fi
 
