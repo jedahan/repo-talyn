@@ -22,7 +22,6 @@ dosfstools
 e2fsprogs
 efibootmgr
 eiwd
-emacs
 exa
 fd
 fff
@@ -36,7 +35,6 @@ git-bug
 globe-cli
 gnupg1
 grim
-hack-nerd-font
 hicolor-icon-theme
 human-cursor-theme
 hydroxide
